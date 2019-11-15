@@ -26,7 +26,6 @@ public class App {
             NhanVat b=new NhanVat("Cung thu", 200,150,10,bs);
             TranDau hi=new TranDau(a, b, m);
             hi.fight();
-            hi.ShowResult();
         }
         else{
             KyNang [] bs= new KyNang[2];
@@ -35,7 +34,6 @@ public class App {
             NhanVat b=new NhanVat("Cung thu", 150,100,20,bs);
             TranDau hi=new TranDau(a, b, m);
             hi.fight();
-            hi.ShowResult();
         }
         sc.close();
     }

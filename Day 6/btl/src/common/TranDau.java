@@ -14,33 +14,28 @@ public class TranDau{
     }
 
     public void fight(){
-        int l=this.first;
+        int l=this.first-1;
         while(!end()){
-            if(l==1){
-                System.out.println("------>Hero<---------");
-                ngchoi.status();
-                ngchoi.show_skills();
-                System.out.print("Chon ky nang: ");
-                int c=sc.nextInt();
-                KyNang using=ngchoi.getSkills()[c-1];
-                if(ngchoi.canUse(using)){
-                    ngchoi.useKN(using);
-                    qvat.getDame(using);
-                    l=2;
-                }
-                else{
-                    System.out.println("Khong dung duoc ky nang nay!");
-                }
-            }
-            else{
-                System.out.println("------>Monster<-------");
-                qvat.status();
-                qvat.show_skills();
-                KyNang using=qvat.getSkills()[0];
-                ngchoi.getDame(using);
-                System.out.println("Chi co mot ky nang, khoi chon.");
-                l=1;
-            }
+            attack(l);
+            l^=1;
+        }
+        this.ShowResult();
+    }
+
+    public void attack(int l){
+        if(l==0){
+            System.out.println("------>Hero<---------");
+            ngchoi.status();
+            KyNang using=ngchoi.getKN();
+            ngchoi.useKN(using);
+            qvat.getDame(using);
+        }
+        else{
+            System.out.println("------>Monster<-------");
+            qvat.status();
+            KyNang using=qvat.getKN();
+            qvat.useKN(using);
+            ngchoi.getDame(using);
         }
     }
 

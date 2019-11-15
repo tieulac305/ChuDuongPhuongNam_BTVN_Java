@@ -1,8 +1,10 @@
 package common;
+import java.util.Scanner;
 public class NhanVat{
     private String name;
     private KyNang skills[];
     private int MP,HP,AR;
+    Scanner sc=new Scanner(System.in);
     public NhanVat(String n,int a,int b,int c,KyNang ss[]){
         this.name=n;
         this.HP=a;
@@ -21,6 +23,19 @@ public class NhanVat{
 
     public void useKN(KyNang x){
         this.MP-=x.getMP();
+    }
+
+    public KyNang getKN(){
+        this.show_skills();
+        System.out.print("Chon ky nang: ");
+        int c=sc.nextInt();
+        KyNang using=this.getSkills()[c-1];
+        while(!this.canUse(using)){
+            System.out.println("Khong dung duoc ky nang nay!");
+            c=sc.nextInt();
+            using=this.getSkills()[c-1];
+        }
+        return using;
     }
 
     public void getDame(KyNang x){
