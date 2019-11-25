@@ -10,7 +10,10 @@ public class App {
         Scanner sc = new Scanner(System.in);
         Class imsad = new Class();
         Student [] students;
-
+// dinh viet method nhap cho class luon ma thoi nhin the nay cho da dang
+// du trong hoi kem sang :v
+// va thieu chuyen nghiep .-.
+// noi chung bai nay tham qua T^T
         System.out.println("Nhap vao thong tin lop hoc:");
         System.out.print("Nhap ma lop hoc: ");
         imsad.setCode(sc.nextLine());
@@ -32,15 +35,29 @@ public class App {
         imsad.setTeacher(sc.nextLine());
 
         System.out.println("Thong tin lop hoc vua nhap: ");
-        System.out.println("Ma lop hoc: "+imsad.getCode());
-        System.out.println("Ten lop hoc: "+imsad.getName());
-        System.out.println("Ngay mo: "+imsad.getOpDay());
-        System.out.println("So luong sinh vien: "+imsad.getNum());
-        System.out.println("Thong tin sinh vien: ");
+        imsad.Print();
+
+        int sts11=0;
         Student [] imsadsts = imsad.getStudents();
-        for(int i=0 ; i<n ; i++){
-            imsadsts[i].Xuat();
+        for (Student sts : imsadsts){
+            if (sts.getYear()==11){
+                sts11+=1;
+            }
         }
-        System.out.println("Giao vien: "+imsad.getTeacher());
+        System.out.println("So sinh vien khoa 11: "+sts11);
+        
+        for(int i=0 ; i<imsadsts.length ; i++){
+            for(int j=i ; j<imsadsts.length ; j++){
+                if(imsadsts[i].getYear()>imsadsts[j].getYear()){
+                    Student none=imsadsts[i];
+                    imsadsts[i]=imsadsts[j];
+                    imsadsts[j]=none;
+                }
+            }
+        }
+
+        imsad.setStudents(imsadsts);
+        System.out.println("Thong tin lop hoc sau khi sap xep: ");
+        imsad.Print();
     }
 }

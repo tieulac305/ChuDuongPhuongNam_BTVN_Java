@@ -55,4 +55,16 @@ public class Class{
     public void setTeacher(String teacher) {
         this.teacher = teacher;
     }
+
+    public void Print() {
+        System.out.println("Ma lop hoc: "+this.code);
+        System.out.println("Ten lop hoc: "+this.name);
+        System.out.println("Ngay mo: "+this.opDay);
+        System.out.println("So luong sinh vien: "+this.num);
+        System.out.println("Thong tin sinh vien: ");
+        for(Student sts : this.students){
+            sts.Xuat();
+        }
+        System.out.println("Giao vien: "+this.teacher);
+    }
 }
